@@ -2,7 +2,7 @@
     "name": "cklmercer/laravel-model-settings",
     "description": "Easily add a flexible settings field to your Laravel models.",
     "require": {
-        "php": ">=5.6"
+        "php": ">=5.5.9"
     },
     "support": {
         "issues": "https://github.com/cklmercer/laravel-model-settings/issues",
@@ -20,6 +20,5 @@
             "Cklmercer\\": "/src"
 	},
     
-    "minimum-stability": "dev",
-        
+    "minimum-stability": "dev"
 }
