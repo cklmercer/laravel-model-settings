@@ -65,6 +65,18 @@ class Settings
     }
 
     /**
+     * Forget the setting at the given path.
+     *
+     * @alias  delete()
+     * @param  null $path
+     * @return array
+     */
+    public function forget($path = null)
+    {
+        return $this->delete($path);
+    }
+
+    /**
      * Return the value of the setting at the given path.
      *
      * @param  string|null $path
@@ -106,5 +118,18 @@ class Settings
         array_set($settings, $path, $value);
 
         return $this->apply($settings);
+    }
+
+    /**
+     * Update the setting at the given path if it exists.
+     *
+     * @alias  set()
+     * @param  string $path
+     * @param  mixed $value
+     * @return $this|array
+     */
+    public function update($path, $value)
+    {
+        return $this->set($path, $value);
     }
 }

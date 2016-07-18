@@ -58,6 +58,7 @@ $user->settings('some.setting'); // Quicker access.
 $user = App\User::first();
 
 $user->settings()->set('some.setting', 'new value');
+$user->settings()->update('some.setting', 'new value');
 ```
 
 ##### 4.) Determine if the model has a specific setting.
@@ -72,6 +73,7 @@ $user->settings()->has('some.setting');
 $user = App\User::first();
 
 $user->settings()->delete('some.setting');
+$user->settings()->forget('some.setting');
 ```
 
 ## License

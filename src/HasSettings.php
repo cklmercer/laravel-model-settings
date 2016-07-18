@@ -29,11 +29,12 @@ trait HasSettings
     /**
      * The model's settings.
      *
-     * @param  null $key
+     * @param  string|null $key
+     * @param  mixed|null $default
      * @return Settings
      */
-    public function settings($key = null)
+    public function settings($key = null, $default = null)
     {
-        return $key ? $this->settings()->get($key) : new Settings($this);
+        return $key ? $this->settings()->get($key, $default) : new Settings($this);
     }
 }
