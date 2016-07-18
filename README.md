@@ -102,6 +102,7 @@ class User extends Authenticatable
 
     // truncated for brevity..
 }
+```
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
