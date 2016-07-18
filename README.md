@@ -77,6 +77,10 @@ $user->settings()->forget('some.setting');
 ```
 
 ##### 6.) Set the default settings for a new model.
+
+If you define `$defaultSettings` as an array property on your model, we will use its value as the default settings for 
+any new models that are created *without* settings.
+
 _User.php_
 ```
 use Cklmercer\ModelSettings\HasSettings;
@@ -87,18 +91,38 @@ class User extends Authenticatable
     use HasSettings;
 
     /**
-     * Set the model's default settings.
-     *
-     * @return void
+     * The model's default settings.
+     * 
+     * @var array
      */
-    protected function setDefaultSettings() 
-    {
-    	$this->settings = [
-    		'some' => [
-    			'setting' => true
-    		]
-    	];
-    }
+    protected $defaultSettings = [
+    	'homepage' => '/profile'
+    ];
+
+    // truncated for brevity..
+}
+```
+
+##### 7.) Specify the settings that are allowed.
+
+If you define `$allowedSettings` as an array property then only settings which match a value within 
+the `$allowedSettings` array will be saved on the model.
+
+_User.php_
+```
+use Cklmercer\ModelSettings\HasSettings;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable 
+{
+    use HasSettings;
+
+    /**
+     * The model's allowed settings.
+     * 
+     * @var array
+     */
+    protected $allowedSettings = ['homepage'];
 
     // truncated for brevity..
 }

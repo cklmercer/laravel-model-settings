@@ -12,10 +12,28 @@ trait HasSettings
     public static function bootHasSettings()
     {
         self::creating(function ($model) {
-            if (method_exists($model, 'setDefaultSettings')) {
-                $model->setDefaultSettings();
+            if ( ! $model->settings) {
+                $model->settings = $model->getDefaultSettings();
             }
         });
+
+        self::saving(function ($model) {
+            if (property_exists($model, 'allowedSettings') && is_array($model->allowedSettings)) {
+                $model->settings = array_only($model->settings, $model->allowedSettings);
+            }
+        });
+    }
+
+    /**
+     * Get the model's default settings.
+     *
+     * @return array
+     */
+    public function getDefaultSettings()
+    {
+        return (isset($this->defaultSettings) && is_array($this->defaultSettings)) 
+            ? $this->defaultSettings 
+            : [];
     }
 
     /**
