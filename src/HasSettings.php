@@ -18,7 +18,7 @@ trait HasSettings
         });
 
         self::saving(function ($model) {
-            if (property_exists($model, 'allowedSettings') && is_array($model->allowedSettings)) {
+            if ($model->settings && property_exists($model, 'allowedSettings') && is_array($model->allowedSettings)) {
                 $model->settings = array_only($model->settings, $model->allowedSettings);
             }
         });
