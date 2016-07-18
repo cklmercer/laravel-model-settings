@@ -1,23 +1,24 @@
 {
     "name": "cklmercer/laravel-model-settings",
-    "description": "Easily add a flexible settings field to your Laravel models.",
-    "require": {
-        "php": ">=5.5.9"
-    },
+    "description": "Add simple yet flexible settings to your Laravel models.",
+    "keywords": ["laravel", "settings", "models"],
+    "license": "MIT",
     "support": {
         "issues": "https://github.com/cklmercer/laravel-model-settings/issues",
         "source": "https://github.com/cklmercer/laravel-model-settings"
     },
-    "license": "MIT",
     "authors": [
         {
             "name": "Cody Mercer",
             "email": "me@codymercer.com"
         }
     ],
+    "require": {
+        "php": ">=5.5.9",
+    },
     "autoload": {
         "psr-4": {
-            "Cklmercer\\": "/src"
+            "Cklmercer\\": "src/"
 	},
     
     "minimum-stability": "dev"
