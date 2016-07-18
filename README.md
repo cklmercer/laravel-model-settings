@@ -24,7 +24,7 @@ Schema::create('users', function (Blueprint $table) {
 ##### 3.) Use the "HasSettings.php" trait within your model.
 _User.php_
 ```
-use Cklmercer/ModelSettings/HasSettings;
+use Cklmercer\ModelSettings\HasSettings;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable 
@@ -79,7 +79,7 @@ $user->settings()->forget('some.setting');
 ##### 6.) Set the default settings for a new model.
 _User.php_
 ```
-use Cklmercer/ModelSettings/HasSettings;
+use Cklmercer\ModelSettings\HasSettings;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable 
