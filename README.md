@@ -76,5 +76,32 @@ $user->settings()->delete('some.setting');
 $user->settings()->forget('some.setting');
 ```
 
+##### 6.) Set the default settings for a new model.
+_User.php_
+```
+use Cklmercer/ModelSettings/HasSettings;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable 
+{
+    use HasSettings;
+
+    /**
+     * Set the model's default settings.
+     *
+     * @return void
+     */
+    protected function setDefaultSettings() 
+    {
+    	$this->settings = [
+    		'some' => [
+    			'setting' => true
+    		]
+    	];
+    }
+
+    // truncated for brevity..
+}
+
 ## License
 [MIT](http://opensource.org/licenses/MIT)

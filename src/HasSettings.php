@@ -5,6 +5,20 @@ namespace Cklmercer\ModelSettings;
 trait HasSettings
 {
     /**
+     * Boot the HasSettings trait.
+     *
+     * @return void
+     */
+    public static function bootHasSettings()
+    {
+        self::creating(function ($model) {
+            if (method_exists($model, 'setDefaultSettings')) {
+                $model->setDefaultSettings();
+            }
+        });
+    }
+
+    /**
      * Get the settings attribute.
      *
      * @param  json $settings
