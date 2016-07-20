@@ -53,7 +53,7 @@ class Settings
      */
     public function delete($path = null)
     {
-        if (!$path) {
+        if (! $path) {
             return $this->set([]);
         }
 
