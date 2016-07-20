@@ -40,7 +40,6 @@ trait HasSettings
      * Get the settings attribute.
      *
      * @param json $settings
-     *
      * @return mixed
      */
     public function getSettingsAttribute($settings)
@@ -52,7 +51,6 @@ trait HasSettings
      * Set the settings attribute.
      *
      * @param  $settings
-     *
      * @return void
      */
     public function setSettingsAttribute($settings)
@@ -65,7 +63,6 @@ trait HasSettings
      *
      * @param string|null $key
      * @param mixed|null  $default
-     *
      * @return Settings
      */
     public function settings($key = null, $default = null)

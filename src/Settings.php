@@ -35,7 +35,6 @@ class Settings
      * Apply the model's settings.
      *
      * @param array $settings
-     *
      * @return $this
      */
     public function apply($settings = [])
@@ -50,7 +49,6 @@ class Settings
      * Delete the setting at the given path.
      *
      * @param string|null $path
-     *
      * @return array
      */
     public function delete($path = null)
@@ -69,10 +67,8 @@ class Settings
     /**
      * Forget the setting at the given path.
      *
-     * @alias  delete()
-     *
+     * @alias delete()
      * @param null $path
-     *
      * @return array
      */
     public function forget($path = null)
