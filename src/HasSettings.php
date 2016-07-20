@@ -12,7 +12,7 @@ trait HasSettings
     public static function bootHasSettings()
     {
         self::creating(function ($model) {
-            if (!$model->settings) {
+            if (! $model->settings) {
                 $model->settings = $model->getDefaultSettings();
             }
         });
