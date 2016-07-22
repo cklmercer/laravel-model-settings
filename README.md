@@ -21,7 +21,7 @@ Schema::create('users', function (Blueprint $table) {
 });
 ```
 
-##### 3.) Use the "HasSettings.php" trait within your model.
+##### 3.) Use the trait `Cklmercer\ModelSettings\HasSettings` within your model.
 _User.php_
 ```
 use Cklmercer\ModelSettings\HasSettings;
