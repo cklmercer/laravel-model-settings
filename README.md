@@ -5,13 +5,13 @@ _Note: I will be updating this plugin in the near future to better match the API
 
 ## Installation
 ##### 1.) Install via composer
-```
+```bash
 composer require cklmercer/laravel-model-settings
 ```
 
 ##### 2.) Add a JSON settings field to your model's migration.
 _create_users_table.php_ 
-```
+```php
 Schema::create('users', function (Blueprint $table) {
     $table->increments('id');
     $table->string('name');
@@ -25,7 +25,7 @@ Schema::create('users', function (Blueprint $table) {
 
 ##### 3.) Use the trait `Cklmercer\ModelSettings\HasSettings` within your model.
 _User.php_
-```
+```php
 use Cklmercer\ModelSettings\HasSettings;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -39,7 +39,7 @@ class User extends Authenticatable
 
 ## Usage
 ##### 1.) Get all of the model's settings.
-```
+```php
 $user = App\User::first();
 
 $user->settings()->all(); // Returns an array of the user's settings.
@@ -47,7 +47,7 @@ $user->settings()->get(); // Returns an array of the user's settings.
 ```
 
 ##### 2.) Get a specific setting.
-```
+```php
 $user = App\User::first();
 
 $user->settings()->get('some.setting');
@@ -56,7 +56,7 @@ $user->settings('some.setting'); // Quicker access.
 ```
 
 ##### 3.) Add or update a setting.
-```
+```php
 $user = App\User::first();
 
 $user->settings()->set('some.setting', 'new value');
@@ -64,14 +64,14 @@ $user->settings()->update('some.setting', 'new value');
 ```
 
 ##### 4.) Determine if the model has a specific setting.
-```
+```php
 $user = App\User::first();
 
 $user->settings()->has('some.setting');
 ```
 
 ##### 5.) Remove a setting from a model.
-```
+```php
 $user = App\User::first();
 
 $user->settings()->delete('some.setting');
@@ -84,7 +84,7 @@ If you define `$defaultSettings` as an array property on your model, we will use
 any new models that are created *without* settings.
 
 _User.php_
-```
+```php
 use Cklmercer\ModelSettings\HasSettings;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -111,7 +111,7 @@ If you define `$allowedSettings` as an array property then only settings which m
 the `$allowedSettings` array will be saved on the model.
 
 _User.php_
-```
+```php
 use Cklmercer\ModelSettings\HasSettings;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
