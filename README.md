@@ -130,5 +130,29 @@ class User extends Authenticatable
 }
 ```
 
+##### 8.) Using another method name other than settings()
+
+If you prefer to use another name other than `settings` , you can do so by defining a `$mapSettingsTo` property. This simply maps calls to the method (such as `config()`) to the `settings()` method.
+
+_User.php_
+```php
+use Cklmercer\ModelSettings\HasSettings;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable 
+{
+    use HasSettings;
+
+    /**
+     * The settings field name.
+     * 
+     * @var string
+     */
+    protected $mapSettingsTo = 'config';
+
+    // truncated for brevity..
+}
+```
+
 ## License
 [MIT](http://opensource.org/licenses/MIT)
