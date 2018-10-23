@@ -69,4 +69,22 @@ trait HasSettings
     {
         return $key ? $this->settings()->get($key, $default) : new Settings($this);
     }
+    
+    /**
+     * Map settings() to another alias specified with $mapSettingsTo.
+     * 
+     * @param string $name
+     * @param array $args
+     * @return mixed
+     */
+    public function __call($name, $args)
+    {
+        if (isset($this->mapSettingsTo) && $name == $this->mapSettingsTo) {
+            return $this->settings(...$args);
+        }
+
+        return is_callable(['parent', '__call'])
+            ? parent::__call($name, $args) 
+            : null;
+    }
 }
