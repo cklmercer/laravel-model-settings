@@ -2,6 +2,8 @@
 
 namespace Cklmercer\ModelSettings;
 
+use Illuminate\Support\Arr;
+
 trait HasSettings
 {
     /**
@@ -12,14 +14,14 @@ trait HasSettings
     public static function bootHasSettings()
     {
         self::creating(function ($model) {
-            if (! $model->settings) {
+            if (!$model->settings) {
                 $model->settings = $model->getDefaultSettings();
             }
         });
 
         self::saving(function ($model) {
             if ($model->settings && property_exists($model, 'allowedSettings') && is_array($model->allowedSettings)) {
-                $model->settings = array_only($model->settings, $model->allowedSettings);
+                $model->settings = Arr::only($model->settings, $model->allowedSettings);
             }
         });
     }
@@ -69,7 +71,7 @@ trait HasSettings
     {
         return $key ? $this->settings()->get($key, $default) : new Settings($this);
     }
-    
+
     /**
      * Map settings() to another alias specified with $mapSettingsTo.
      * 
@@ -84,7 +86,7 @@ trait HasSettings
         }
 
         return is_callable(['parent', '__call'])
-            ? parent::__call($name, $args) 
+            ? parent::__call($name, $args)
             : null;
     }
 }
