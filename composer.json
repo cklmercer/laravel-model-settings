@@ -1,5 +1,5 @@
 {
-    "name": "cklmercer/laravel-model-settings",
+    "name": "maikelvanmaurik/laravel-model-settings",
     "description": "Add simple yet flexible settings to your Laravel models.",
     "keywords": ["laravel", "settings", "models"],
     "license": "MIT",
