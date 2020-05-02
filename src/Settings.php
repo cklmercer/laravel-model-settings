@@ -2,6 +2,7 @@
 
 namespace Cklmercer\ModelSettings;
 
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Model;
 
 class Settings
@@ -26,7 +27,7 @@ class Settings
      *
      * @return array|null
      */
-    public function all()
+    public function all(): ?array
     {
         return $this->model->settings;
     }
@@ -37,7 +38,7 @@ class Settings
      * @param array $settings
      * @return $this
      */
-    public function apply($settings = [])
+    public function apply($settings = []): self
     {
         $this->model->settings = (array) $settings;
         $this->model->save();
@@ -49,9 +50,9 @@ class Settings
      * Delete the setting at the given path.
      *
      * @param string|null $path
-     * @return array
+     * @return self
      */
-    public function delete($path = null)
+    public function delete($path = null): self
     {
         if (! $path) {
             return $this->set([]);
@@ -59,7 +60,7 @@ class Settings
 
         $settings = $this->all();
 
-        array_forget($settings, $path);
+        Arr::forget($settings, $path);
 
         return $this->apply($settings);
     }
@@ -69,9 +70,9 @@ class Settings
      *
      * @alias delete()
      * @param null $path
-     * @return array
+     * @return self
      */
-    public function forget($path = null)
+    public function forget($path = null): self
     {
         return $this->delete($path);
     }
@@ -86,7 +87,7 @@ class Settings
      */
     public function get($path = null, $default = null)
     {
-        return $path ? array_get($this->all(), $path, $default) : $this->all();
+        return $path ? Arr::get($this->all(), $path, $default) : $this->all();
     }
 
     /**
@@ -96,9 +97,9 @@ class Settings
      *
      * @return bool
      */
-    public function has($path)
+    public function has($path): bool
     {
-        return (bool) array_has($this->all(), $path);
+        return (bool) Arr::has($this->all(), $path);
     }
 
     /**
@@ -107,9 +108,9 @@ class Settings
      * @param string|null $path
      * @param mixed       $value
      *
-     * @return array
+     * @return self
      */
-    public function set($path = null, $value = [])
+    public function set($path = null, $value = []): self
     {
         if (func_num_args() < 2) {
             $value = $path;
@@ -118,7 +119,7 @@ class Settings
 
         $settings = $this->all();
 
-        array_set($settings, $path, $value);
+        Arr::set($settings, $path, $value);
 
         return $this->apply($settings);
     }
@@ -131,9 +132,9 @@ class Settings
      * @param string $path
      * @param mixed  $value
      *
-     * @return $this|array
+     * @return self
      */
-    public function update($path, $value)
+    public function update($path, $value): self
     {
         return $this->set($path, $value);
     }

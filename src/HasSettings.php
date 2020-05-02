@@ -2,6 +2,8 @@
 
 namespace Cklmercer\ModelSettings;
 
+use Illuminate\Support\Arr;
+
 trait HasSettings
 {
     /**
@@ -19,7 +21,7 @@ trait HasSettings
 
         self::saving(function ($model) {
             if ($model->settings && property_exists($model, 'allowedSettings') && is_array($model->allowedSettings)) {
-                $model->settings = array_only($model->settings, $model->allowedSettings);
+                $model->settings = Arr::only($model->settings, $model->allowedSettings);
             }
         });
     }
