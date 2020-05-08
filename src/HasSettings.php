@@ -14,7 +14,7 @@ trait HasSettings
     public static function bootHasSettings()
     {
         self::creating(function ($model) {
-            if (! $model->settings) {
+            if (!$model->settings) {
                 $model->settings = $model->getDefaultSettings();
             }
         });
@@ -71,7 +71,7 @@ trait HasSettings
     {
         return $key ? $this->settings()->get($key, $default) : new Settings($this);
     }
-    
+
     /**
      * Map settings() to another alias specified with $mapSettingsTo.
      * 
@@ -86,7 +86,7 @@ trait HasSettings
         }
 
         return is_callable(['parent', '__call'])
-            ? parent::__call($name, $args) 
+            ? parent::__call($name, $args)
             : null;
     }
 }
