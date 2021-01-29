@@ -2,8 +2,8 @@
 
 namespace Cklmercer\ModelSettings;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Model;
 
 class Settings
 {
@@ -27,7 +27,7 @@ class Settings
      *
      * @return array|null
      */
-    public function all()
+    public function all(): ?array
     {
         return $this->model->settings;
     }
@@ -38,7 +38,7 @@ class Settings
      * @param array $settings
      * @return $this
      */
-    public function apply($settings = [])
+    public function apply($settings = []): self
     {
         $this->model->settings = (array) $settings;
         $this->model->save();
@@ -50,9 +50,9 @@ class Settings
      * Delete the setting at the given path.
      *
      * @param string|null $path
-     * @return array
+     * @return self
      */
-    public function delete($path = null)
+    public function delete($path = null): self
     {
         if (!$path) {
             return $this->set([]);
@@ -70,9 +70,9 @@ class Settings
      *
      * @alias delete()
      * @param null $path
-     * @return array
+     * @return self
      */
-    public function forget($path = null)
+    public function forget($path = null): self
     {
         return $this->delete($path);
     }
@@ -97,7 +97,7 @@ class Settings
      *
      * @return bool
      */
-    public function has($path)
+    public function has($path): bool
     {
         return (bool) Arr::has($this->all(), $path);
     }
@@ -108,9 +108,9 @@ class Settings
      * @param string|null $path
      * @param mixed       $value
      *
-     * @return array
+     * @return self
      */
-    public function set($path = null, $value = [])
+    public function set($path = null, $value = []): self
     {
         if (func_num_args() < 2) {
             $value = $path;
@@ -132,9 +132,9 @@ class Settings
      * @param string $path
      * @param mixed  $value
      *
-     * @return $this|array
+     * @return self
      */
-    public function update($path, $value)
+    public function update($path, $value): self
     {
         return $this->set($path, $value);
     }
