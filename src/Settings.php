@@ -25,11 +25,11 @@ class Settings
     /**
      * Get the model's settings.
      *
-     * @return array|null
+     * @return array
      */
-    public function all(): ?array
+    public function all(): array
     {
-        return $this->model->settings;
+        return $this->model->settings ?? [];
     }
 
     /**
@@ -54,8 +54,8 @@ class Settings
      */
     public function delete($path = null): self
     {
-        if (!$path) {
-            return $this->set([]);
+        if (! $path) {
+            return $this->set();
         }
 
         $settings = $this->all();
@@ -69,7 +69,8 @@ class Settings
      * Forget the setting at the given path.
      *
      * @alias delete()
-     * @param null $path
+     * @param string|null $path
+     *
      * @return self
      */
     public function forget($path = null): self
@@ -99,7 +100,7 @@ class Settings
      */
     public function has($path): bool
     {
-        return (bool) Arr::has($this->all(), $path);
+        return Arr::has($this->all(), $path);
     }
 
     /**
@@ -112,11 +113,6 @@ class Settings
      */
     public function set($path = null, $value = []): self
     {
-        if (func_num_args() < 2) {
-            $value = $path;
-            $path = null;
-        }
-
         $settings = $this->all();
 
         Arr::set($settings, $path, $value);

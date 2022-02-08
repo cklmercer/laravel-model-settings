@@ -41,7 +41,8 @@ trait HasSettings
     /**
      * Get the settings attribute.
      *
-     * @param json $settings
+     * @param string $settings
+     *
      * @return mixed
      */
     public function getSettingsAttribute($settings)
