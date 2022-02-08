@@ -1,0 +1,18 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - src
+
+    ignoreErrors:
+        - '#Method MichaelRubel\\SeoManager\\Composers\\SeoComposer\:\:getMaxWildcardLevels\(\) is unused\.#'
+
+    level: max
+
+    checkMissingIterableValueType: false
+
+    reportUnmatchedIgnoredErrors: false
+
+    checkOctaneCompatibility: true
