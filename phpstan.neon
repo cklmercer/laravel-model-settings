@@ -7,7 +7,7 @@ parameters:
         - src
 
     ignoreErrors:
-        - '#Method MichaelRubel\\SeoManager\\Composers\\SeoComposer\:\:getMaxWildcardLevels\(\) is unused\.#'
+        - '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$settings#'
 
     level: max
 
