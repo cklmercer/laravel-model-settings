@@ -113,11 +113,6 @@ class Settings
      */
     public function set($path = null, $value = []): self
     {
-        if (func_num_args() < 2) {
-            $value = $path;
-            $path = null;
-        }
-
         $settings = $this->all();
 
         Arr::set($settings, $path, $value);
